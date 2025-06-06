@@ -257,13 +257,16 @@ def main():
         for i in range(1, 7):
             lines.append(f"${{goto 36}}${{top name {i}}}${{alignr 15}}${{top cpu {i}}}%")
 
-    if options["updates"]:
-        lines.append("${color4}${voffset 5}${alignc}${font Dejavu Sans Mono:bold:size=10}Updates${font}")
-        lines.append(
-            "${alignc}${if_existing /usr/lib/update-notifier/apt-check}Available updates: ${execi 1800 /usr/lib/update-notifier/apt-check --human-readable | awk '{print $1}'}"
-            "${else}${if_existing /usr/bin/dnf}Available updates: ${execi 1800 dnf check-update --refresh | grep -E '^[a-zA-Z0-9]' | wc -l}"
-            "${else}Available updates: ${execi 1800 checkupdates | wc -l}${endif}${endif}"
-        )
+        if options["updates"]:
+            lines.append("${color4}${voffset 5}${alignc}${font Dejavu Sans Mono:bold:size=10}Updates${font}")
+            lines.append(
+                "${alignc}${if_existing /usr/lib/update-notifier/apt-check}Available updates: "
+                "${execi 1800 apt list --upgradable | wc -l | awk '{print $1-1}' > /tmp/conky-updates-count && cat /tmp/conky-updates-count}"
+                "${else}${if_existing /usr/bin/dnf}Available updates: "
+                "${execi 1800 dnf check-update --refresh | grep -E '^[a-zA-Z0-9]' | wc -l}"
+                "${else}Available updates: "
+                "${execi 1800 checkupdates | wc -l}${endif}${endif}"
+            )
 
     if options["time"]:
         lines.append("${voffset 1}${color1}${alignc}${font Dejavu Sans Mono:bold:size=10}Date & Time${font}")

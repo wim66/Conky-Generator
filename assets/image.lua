@@ -18,6 +18,15 @@ local images = {
         rotation = 0,  -- degrees
         draw_me = true
     },
+
+    -- Opaque background image
+    -- Set to true for opaque background
+    {
+        path = "assets/BG-opaque.png",
+        x = 0, y = 0, w = 297, h = 676,
+        rotation = 0,  -- degrees
+        draw_me = false
+    },
 }
 
 -- === Image drawing function with rotation ===
