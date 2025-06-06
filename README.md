@@ -96,4 +96,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
+![Generator.gif](assets/Generator.gif)
+
+---
+
 Created by Willem [@wim66](https://github.com/wim66).
