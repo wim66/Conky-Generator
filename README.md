@@ -69,10 +69,6 @@ Use the interface to configure your Conky setup.
 
 ![screenshot](assets/preview.png) ![preview](assets/preview.GIF)
 
-Added Qt app
-
-![screenshot](assets/preview2.png)
-
 ## FAQ
 ### Q: What's the difference between the CLI and GUI scripts?
 A: The CLI script (`generate-conky.py`) is terminal-based, ideal for minimal setups or servers. The GUI script (`conky_generator_gui.py`) offers a visual interface with checkboxes, dropdowns, and a color picker, plus a "(Re)start Conky" button for convenience.
